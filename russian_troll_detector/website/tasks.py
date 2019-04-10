@@ -7,16 +7,10 @@ import pycld2 as cld2
 import re
 
 # get the Twitter API keys from /etc
-creds = pd.read_csv('/etc/twitter-api-key.csv')
-consumer_key = creds['consumer_key'][0]
-consumer_secret = creds['consumer_secret'][0]
-access_token_key = creds['access_token'][0]
-access_token_secret = creds['access_token_secret'][0]
-
-api = twitter.Api(consumer_key=consumer_key,
-                  consumer_secret=consumer_secret,
-                  access_token_key=access_token_key,
-                  access_token_secret=access_token_secret)
+api = twitter.Api(consumer_key='aMpRy7KcMubJ0hzFdN6NAIdrj',
+                  consumer_secret='Ps2gL1NgEaXnDdBLYaGrAz9XN5pC47AAEOhlkhsRUWKFTERC8n',
+                  access_token_key='1493182352-oTqaqkQIEbFNvKwn9D9Gl0XEtc5vomyV6HmVxs4',
+                  access_token_secret='rKhFI5xEbl1Rrui1JM31KhP4abxFDiD6Qg70Eikef7o64')
 
 
 def is_valid(t):

@@ -10,12 +10,17 @@ from .tasks import get_tweets, calculate_features
 from django.views.decorators.csrf import csrf_exempt
 from sklearn.externals import joblib
 from .extractors import ColumnExtractor, TextExtractor
+from django.contrib.auth.decorators import login_required
 
 """ CODE FOR LOADING MODEL """
 import sys
 sys.path.append('website')
 model_name = 'FAKE_MODEL.pkl'
 clf = joblib.load('website/' + model_name)
+
+@login_required
+def home(request):
+    return render(request, 'website/home.html')
 
 def index(request):
     template = loader.get_template('website/index.html')

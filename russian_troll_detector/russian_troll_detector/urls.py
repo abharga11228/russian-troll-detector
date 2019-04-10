@@ -15,12 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from website.views import index, predict, visualize_account_details
+from website.views import index, predict, visualize_account_details, home
+from django.urls import path, include # new
 
 urlpatterns = [
-    url(r'^$', index),
+    url(r'^$', home),
+    url(r'^oauth/complete/twitter/$', index),
     url(r'^predict', predict),
     url(r'^admin/', admin.site.urls),
-    url(r'^details/', visualize_account_details)
+    url(r'^details/', visualize_account_details),
+    path('accounts/', include('django.contrib.auth.urls')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
 ]
+
+
 
