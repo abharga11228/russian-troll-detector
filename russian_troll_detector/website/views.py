@@ -18,14 +18,16 @@ sys.path.append('website')
 model_name = 'FAKE_MODEL.pkl'
 clf = joblib.load('website/' + model_name)
 
-@login_required
+
 def home(request):
     return render(request, 'website/home.html')
 
+@login_required
 def index(request):
     template = loader.get_template('website/index.html')
     context = {}
     return HttpResponse(template.render(context, request))
+
 
 @csrf_exempt
 def predict(request):
